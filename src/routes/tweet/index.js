@@ -10,6 +10,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Tweet from '../../components/Tweet';
+import Wall from '../../components/Wall';
 
 const title = 'Tweet Us';
 
@@ -20,6 +21,7 @@ function action() {
     component: (
       <Layout>
         <Tweet title={title} />
+        <Wall title="The WALL" />
       </Layout>
     ),
   };
