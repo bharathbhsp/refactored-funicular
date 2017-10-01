@@ -23,6 +23,20 @@ class Tweet extends React.Component {
       tweet: '',
     };
   }
+
+  onTweetChange(e) {
+    this.setState({ tweet: e.target.value });
+  }
+
+  nameChange(e) {
+    this.setState({ name: e.target.value });
+  }
+
+  submitTweet() {
+    window.console.log(`name ${this.state.name}`);
+    window.console.log(`tweet ${this.state.tweet}`);
+  }
+
   render() {
     return (
       <div className={s.root}>
@@ -32,10 +46,15 @@ class Tweet extends React.Component {
           </h1>
         </div>
 
-        <form method="post">
+        <form>
           <label className={s.lead}>Tweet Now</label>
           <div className={s.formGroup}>
-            <input type="text" className={s.input} placeholder="name" />
+            <input
+              type="text"
+              className={s.input}
+              placeholder="name"
+              onChange={e => this.nameChange(e)}
+            />
           </div>
           <div className={s.formGroup}>
             <textarea
@@ -43,10 +62,18 @@ class Tweet extends React.Component {
               className={s.inputmultiline}
               placeholder="tweet here"
               cols="22"
+              onChange={e => this.onTweetChange(e)}
             />
           </div>
           <div className={s.formGroup}>
-            <button className={s.button} type="submit">
+            <button
+              className={s.button}
+              type="submit"
+              onClick={e => {
+                this.submitTweet();
+                e.preventDefault();
+              }}
+            >
               Tweet!!
             </button>
           </div>
